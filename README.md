@@ -1,6 +1,6 @@
 # 🧠 Trabajos de Análisis de Datos 
 
-Este repositorio contiene ejercicios, proyectos y trabajos prácticos relacionados con análisis de datos.
+Este repositorio contiene ejercicios, proyectos y trabajos prácticos relacionados con análisis de datos hechos en  el curso de Data Science Ingenias.
 
 ## 📁 Contenido
 
