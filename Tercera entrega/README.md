@@ -1,6 +1,6 @@
 # Análisis Predictivo de Densidad de Estaciones de Servicio en CABA
 
-Este proyecto de Data Science desarrolla un modelo de aprendizaje supervisado para clasificar y predecir la densidad espacial de estaciones de servicio en la Ciudad Autónoma de Buenos Aires. A través de técnicas de ingeniería de variables, comparación de algoritmos y optimización de hiperparámetros, se transforma un problema geoespacial en una tarea de clasificación robusta y con aplicaciones prácticas.
+Este proyecto desarrolla un modelo de aprendizaje supervisado para clasificar y predecir la densidad espacial de estaciones de servicio en la Ciudad Autónoma de Buenos Aires. A través de técnicas de ingeniería de variables, comparación de algoritmos y optimización de hiperparámetros, se transforma un problema geoespacial en una tarea de clasificación robusta y con aplicaciones prácticas.
 
 ---
 
@@ -14,13 +14,12 @@ El objetivo principal fue construir un modelo capaz de determinar si una estaci�
 - **Optimización de Hiperparámetros**: Ajuste fino del mejor modelo (Random Forest) con GridSearchCV para maximizar su rendimiento.
 - **Análisis de Errores y Visualización**: Interpretación de los resultados a través de métricas de clasificación, matrices de confusión y mapas de coropletas.
 
-📍 *Ejemplo de visualización generada: Mapa de coropletas mostrando la densidad promedio de estaciones por comuna.*
 
 ---
 
-## 2. Metodología y Desarrollo
+## Metodología y Desarrollo
 
-### Paso 1: Definición de la Variable Objetivo
+### Definición de la Variable Objetivo
 
 El dataset no incluía una variable explícita de "densidad". Para resolverlo se definió una métrica:
 
@@ -30,11 +29,11 @@ El dataset no incluía una variable explícita de "densidad". Para resolverlo se
   - `media`: Entre primer y tercer cuartil.
   - `baja`: Cuarto cuartil (más aisladas).
 
-> ✅ Esto permitió convertir un problema espacial continuo en una clasificación multiclase.
+>  Esto permitió convertir un problema espacial continuo en una clasificación multiclase.
 
 ---
 
-### Paso 2: Entrenamiento y Comparación de Modelos
+###  Entrenamiento y Comparación de Modelos
 
 Se entrenaron tres modelos utilizando un pipeline con preprocesamiento y validación cruzada:
 
@@ -44,11 +43,11 @@ Se entrenaron tres modelos utilizando un pipeline con preprocesamiento y validac
 | K-Nearest Neighbors   | 59.6%             |
 | Regresión Logística   | 55.7%             |
 
-🔍 El modelo Random Forest fue seleccionado para la optimización.
+ El modelo Random Forest fue seleccionado para la optimización.
 
 ---
 
-### Paso 3: Optimización y Evaluación Final
+### Optimización y Evaluación Final
 
 - Se usó **GridSearchCV** con **StratifiedKFold**.
 - **Hiperparámetros optimizados**: `n_estimators`, `max_depth`, `min_samples_split`, `max_features`.
@@ -56,7 +55,7 @@ Se entrenaron tres modelos utilizando un pipeline con preprocesamiento y validac
 
 ---
 
-## 3. Herramientas y Librerías Utilizadas
+## Herramientas y Librerías Utilizadas
 
 - **Lenguaje**: Python 3
 - **Análisis de Datos**: Pandas, NumPy
@@ -70,19 +69,15 @@ Se entrenaron tres modelos utilizando un pipeline con preprocesamiento y validac
 
 ---
 
-## 4. Estructura del Repositorio
+##  Estructura del Repositorio
 
-- `Tercera_pre_entrega (1).ipynb`: Jupyter Notebook con el proceso completo.
+- `Tercera_pre_entrega (2).ipynb`: Jupyter Notebook con el proceso completo.
 - `estaciones_servicio_caba.csv`: Dataset principal.
 - `comunas.geojson.txt`: Geometrías de las comunas para visualización.
 - `README.md`: Este archivo.
 
 ---
 
-## 5. Conclusiones y Próximos Pasos
-
+##  Conclusiones 
 El modelo Random Forest optimizado predice con éxito la densidad de estaciones de servicio en CABA. El análisis revela patrones geográficos significativos que podrían ser útiles para planificación urbana.
 
-
-
-💡 *Este proyecto combina Machine Learning y análisis espacial, ofreciendo una visión práctica sobre la distribución urbana de infraestructura crítica.*
