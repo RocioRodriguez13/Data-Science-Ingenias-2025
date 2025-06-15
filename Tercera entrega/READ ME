@@ -1,0 +1,54 @@
+Análisis Predictivo de Densidad de Estaciones de Servicio en CABA
+
+Este proyecto desarrolla un modelo de aprendizaje supervisado para clasificar y predecir la densidad espacial de estaciones de servicio en la Ciudad Autónoma de Buenos Aires. A través de técnicas de ingeniería de variables, comparación de algoritmos y optimización de hiperparámetros, se transforma un problema geoespacial en una tarea de clasificación robusta y con aplicaciones prácticas.
+1. Resumen del Proyecto
+El objetivo principal fue construir un modelo capaz de determinar si una estación de servicio se encuentra en una zona de alta, media o baja densidad, basándose en sus características geográficas y administrativas. El proyecto abarca el ciclo completo de un problema de ciencia de datos:
+Análisis Exploratorio de Datos (EDA): Comprensión inicial de la distribución y características de las 230 estaciones.
+Ingeniería de Variables: Creación de una métrica de densidad (clase_densidad) utilizando el algoritmo k-Vecinos más Cercanos (k-NN) y la métrica de distancia Haversine.
+Modelado y Evaluación: Comparación de múltiples algoritmos de clasificación (Random Forest, Regresión Logística, KNN) mediante validación cruzada.
+Optimización de Hiperparámetros: Ajuste fino del mejor modelo (Random Forest) con GridSearchCV para maximizar su rendimiento.
+Análisis de Errores y Visualización: Interpretación de los resultados a través de métricas de clasificación, matrices de confusión y mapas de coropletas para una comunicación efectiva de los hallazgos.
+Ejemplo de visualización generada: Mapa de coropletas mostrando la densidad promedio de estaciones por comuna.
+2. Metodología y Desarrollo
+Paso 1: Definición de la Variable Objetivo
+El dataset inicial no contenía una variable directa para la "densidad". Para solucionar esto, se creó una métrica personalizada:
+Cálculo de Distancia al Vecino más Cercano: Para cada estación, se calculó la distancia promedio en kilómetros a sus 3 vecinas más cercanas (avg_dist_km_3nn). Una distancia menor implica una mayor densidad.
+Discretización por Cuartiles: La variable continua avg_dist_km_3nn se transformó en una variable categórica (clase_densidad) con tres niveles:
+alta: Estaciones en el primer cuartil (las más próximas entre sí).
+media: Estaciones entre el primer y tercer cuartil.
+baja: Estaciones en el cuarto cuartil (las más aisladas).
+Este paso fue crucial para convertir un problema de análisis espacial en un problema de clasificación supervisada multiclase.
+Paso 2: Entrenamiento y Comparación de Modelos
+Con la variable objetivo definida, se entrenaron y evaluaron tres algoritmos utilizando un Pipeline que incluía preprocesamiento (One-Hot Encoding) y validación cruzada:
+Modelo	Accuracy Promedio (Validación Cruzada)
+Random Forest	60.9%
+K-Nearest Neighbors	59.6%
+Regresión Logística	55.7%
+El Random Forest fue seleccionado como el modelo con mejor rendimiento base para proceder a la optimización.
+Paso 3: Optimización y Evaluación Final
+Para maximizar la capacidad predictiva, se realizó una optimización de hiperparámetros sobre el modelo Random Forest utilizando GridSearchCV y StratifiedKFold.
+Hiperparámetros optimizados: n_estimators, max_depth, min_samples_split, max_features.
+Resultado: El modelo optimizado alcanzó una precisión promedio del 64.8% en validación cruzada, demostrando una mejora significativa.
+El modelo final fue evaluado en un conjunto de prueba, donde se analizaron en detalle las métricas de clasificación y la matriz de confusión, revelando patrones de error concentrados en zonas de transición geográfica.
+3. Herramientas y Librerías Utilizadas
+Lenguaje: Python 3
+Análisis y Manipulación de Datos: Pandas, NumPy
+Modelado de Machine Learning: Scikit-learn
+NearestNeighbors para la ingeniería de variables espaciales.
+RandomForestClassifier, LogisticRegression, KNeighborsClassifier para la clasificación.
+Pipeline, ColumnTransformer, OneHotEncoder para preprocesamiento.
+GridSearchCV, StratifiedKFold para la optimización de modelos.
+Visualización: Matplotlib, Seaborn
+Análisis Geoespacial (Opcional): GeoPandas para la creación de mapas de coropletas.
+4. Estructura del Repositorio
+Tercera_pre_entrega (1).ipynb: Notebook de Jupyter con todo el proceso de análisis, modelado y visualización.
+estaciones_servicio_caba.csv: Dataset principal con la información de las estaciones de servicio.
+comunas.geojson.txt: Archivo GeoJSON con las geometrías de las comunas de CABA, utilizado para las visualizaciones espaciales.
+README.md: Este archivo.
+5. Conclusiones y Próximos Pasos
+Este proyecto demuestra con éxito la construcción de un modelo de aprendizaje supervisado para un problema espacial complejo. El modelo Random Forest optimizado es capaz de predecir la densidad de estaciones con una precisión validada y útil, y su análisis revela patrones geográficos claros sobre la distribución de las estaciones en CABA.
+Próximos Pasos:
+Enriquecer Features: Incorporar datos adicionales como la cercanía a avenidas principales, tipo de zonificación del suelo o datos demográficos por comuna para mejorar la precisión.
+Técnicas de Balanceo: Aplicar técnicas como SMOTE para mitigar el desbalance de clases y mejorar el recall en las clases minoritarias.
+Modelos Alternativos: Explorar algoritmos más avanzados como XGBoost o LightGBM, que a menudo superan a Random Forest en problemas tabulares.
+Análisis No Supervisado: Utilizar los datos de coordenadas para aplicar algoritmos de clustering (como DBSCAN) y descubrir agrupaciones naturales de estaciones, complementando el análisis supervisado actual.
