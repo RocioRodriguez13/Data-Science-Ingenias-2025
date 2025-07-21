@@ -78,6 +78,7 @@ Se aplicaron técnicas de **Data Science** para obtener una visión integral del
 
 - Visualización de **patrones espaciales** de cobertura  
 - Mapas interactivos con zonas de mayor y menor densidad  
-- Insights estratégicos para optimizar la ubicación de nuevas estaciones  
+- Insights estratégicos para optimizar la ubicación de nuevas estaciones
 
-
+## 💛 Presentación
+- https://gamma.app/docs/Analisis-de-Densidad-y-Clustering-de-Estaciones-de-Servicio-en-CA-yywvfaincusl4c3
